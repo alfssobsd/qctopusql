@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="tr" >
+    <file>langs/qctopusql_ru.qm</file>
+    <file>langs/qt_ru.qm</file>
+  </qresource>
+</RCC>

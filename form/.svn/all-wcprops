@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 26
+/svn/!svn/ver/8/trunk/form
+END
+users_forward_find_dialog.ui
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/2/trunk/form/users_forward_find_dialog.ui
+END
+aliases_edit_dialog.ui
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/2/trunk/form/aliases_edit_dialog.ui
+END
+login.ui
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/8/trunk/form/login.ui
+END
+aliases_add_dialog.ui
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/2/trunk/form/aliases_add_dialog.ui
+END
+about.ui
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/8/trunk/form/about.ui
+END
+users_forward_add_dialog.ui
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/2/trunk/form/users_forward_add_dialog.ui
+END
+languges.qrc
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/5/trunk/form/languges.qrc
+END
+domains_add_dialog.ui
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/2/trunk/form/domains_add_dialog.ui
+END
+aliases.ui
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/2/trunk/form/aliases.ui
+END
+aliases_delete_dialog.ui
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/2/trunk/form/aliases_delete_dialog.ui
+END
+profiles.ui
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/2/trunk/form/profiles.ui
+END
+users_edit_dialog.ui
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/2/trunk/form/users_edit_dialog.ui
+END
+users_forward.ui
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/2/trunk/form/users_forward.ui
+END
+users_forward_delete_dialog.ui
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/2/trunk/form/users_forward_delete_dialog.ui
+END
+users_add_dialog.ui
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/2/trunk/form/users_add_dialog.ui
+END
+image.qrc
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/9/trunk/form/image.qrc
+END
+domains.ui
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/2/trunk/form/domains.ui
+END
+find_dialog.ui
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/2/trunk/form/find_dialog.ui
+END
+aliases_find_dialog.ui
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/2/trunk/form/aliases_find_dialog.ui
+END
+users.ui
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/2/trunk/form/users.ui
+END
+user_forward.ui
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/trunk/form/user_forward.ui
+END
+users_delete_dialog.ui
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/2/trunk/form/users_delete_dialog.ui
+END

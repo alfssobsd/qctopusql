@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 25
+/svn/!svn/ver/8/trunk/src
+END
+aliases.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/3/trunk/src/aliases.cpp
+END
+users.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/3/trunk/src/users.cpp
+END
+main.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/8/trunk/src/main.cpp
+END
+users_forward.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/3/trunk/src/users_forward.cpp
+END
+domains.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/3/trunk/src/domains.cpp
+END
+main_window.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/8/trunk/src/main_window.cpp
+END
