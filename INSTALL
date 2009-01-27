@@ -10,6 +10,9 @@ Required:
 	
 	Exim >= 4.3x
 	   http://www.exim.org/
+#
+Configure Exim:
+    http://wiki.github.com/alfss/qctopusql
 
 #
 Build and Install:
