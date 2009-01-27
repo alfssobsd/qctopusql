@@ -1,7 +1,21 @@
+#######################################
+#
+Required:
+		
+	Qt >= 4.2
+	   http://www.qtsoftware.com/
 
---->
+	Libpq >=  8.0
+	   http://www.postgresql.org/
+	
+	Exim >= 4.3x
+	   http://www.exim.org/
 
-qmake
-make
+#
+Build and Install:
 
+ qmake
+ make
+ make install
 
+#
