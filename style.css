@@ -1,0 +1,132 @@
+#header
+{
+  background-image: url("top-bg.png");
+  background-repeat: repeat-x;
+  margin: 0;
+  padding: 0;
+  height: 89px;
+  overflow: hidden;
+}
+
+
+
+#menu
+{
+  color:black;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+#menu > ul
+{
+  margin-left: 0px;
+  display: block;
+}
+
+#menu ul ul, #menu li, #menu a
+{
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+#top
+{
+  text-align: center;
+}
+
+
+
+
+#current
+{
+	font-weight: bold;
+	font-size: 14px;
+	font-family: Terminus, sans-serif;
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: sans-serif;
+  font-size: normal;
+  color: black;
+
+}
+#menu a
+{
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#top a{
+
+	font-size: 14px;
+	color: black;
+	font-weight: bold;
+}
+
+
+
+#bottom
+{
+  padding-top: 1px;
+  clear: both;
+}
+
+#bottomLeft
+{
+  width: 59%;
+  float: left;
+  margin-left: 2%;
+  margin-right: 5%;
+}
+
+#bottomRight
+{
+  margin-right: 2%;
+  width: 32%;
+  float: left;
+}
+
+#bottom h1
+{
+  border-bottom: 1px solid #99c;
+  margin-top: 2em;
+}
+
+#bottom h2
+{
+  border-bottom: 1px solid #99c;
+  margin-top: 2em;
+}
+
+#bottom h3
+{
+	font-size: 18px;
+}
+
+#bottomLeft  #formula
+{
+
+	font-size: 14px;
+	font-style:italic; 
+	font-weight: bold;
+}
+
+#copyright
+{
+  color: gray;
+  clear:both;
+  background:#efefef;
+  padding:10px;
+}
+
+#copyright p
+{
+  text-align:center;
+}
+
