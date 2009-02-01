@@ -160,6 +160,8 @@ int MainWindow::GetAllDomains(){
 	  query.clear();
 
 	  UserWidget->SetCompleterList(tmp_list);
+	  UsersForwardWidget->SetCompleterList(tmp_list);
+	  AliasesWidget->SetCompleterList(tmp_list);
 	  
 	}else{
 	  

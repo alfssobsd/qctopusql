@@ -50,7 +50,8 @@ public:
   
   Aliases(QSqlDatabase db, QWidget *parent);
   QSqlDatabase db_psql;
-					  
+  void SetCompleterList(QStringList list);
+										 
 private slots:
   void GetAliases();
   void Dialog_Add_Aliases();
@@ -61,6 +62,9 @@ private slots:
   
 private:
   Ui::Aliases ui;
+
+  QStringListModel * completerModel;
+  QCompleter *completer;
   QTableWidgetItem *__item0;
   QTableWidgetItem *__item1;
   QTableWidgetItem *__item2;

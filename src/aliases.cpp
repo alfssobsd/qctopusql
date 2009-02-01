@@ -38,6 +38,17 @@ Aliases::Aliases(QSqlDatabase db, QWidget *parent)
 	ui.tableWidget_Aliases->setColumnWidth(i, 100);
   
   }
+
+  QStringList wordList;
+  wordList << "obsd.org" ;
+
+  completerModel = new QStringListModel;
+  completerModel->setStringList(wordList);
+
+  completer = new QCompleter(this);
+  completer->setModel(completerModel);
+
+  ui.lineEdit_Domain->setCompleter(completer);
   
 }
 
@@ -223,3 +234,8 @@ void Aliases::TestQuery(){
   
 }
 
+void Aliases::SetCompleterList(QStringList list){
+
+  completerModel->setStringList(list);
+  
+}

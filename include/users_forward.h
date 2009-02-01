@@ -51,7 +51,8 @@ public:
   
   UsersForward(QSqlDatabase db, QWidget *parent);
   QSqlDatabase db_psql;
-					  
+  void SetCompleterList(QStringList list);
+										 
 private slots:
   void GetUsersForward();
   void Dialog_Add_UsersForward();
@@ -62,6 +63,9 @@ private slots:
   
 private:
   Ui::UsersForward ui;
+
+  QStringListModel * completerModel;
+  QCompleter *completer;
   QTableWidgetItem *__item0;
   QTableWidgetItem *__item1;
   QTableWidgetItem *__item2;

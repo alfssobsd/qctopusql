@@ -38,6 +38,17 @@ UsersForward::UsersForward(QSqlDatabase db, QWidget *parent)
 	ui.tableWidget_UsersForward->setColumnWidth(i, 100);
   
   }
+
+  QStringList wordList;
+  wordList << "obsd.org" ;
+  
+  completerModel = new QStringListModel;
+  completerModel->setStringList(wordList);
+  
+  completer = new QCompleter(this);
+  completer->setModel(completerModel);
+
+  ui.lineEdit_Domain->setCompleter(completer);
   
 }
 
@@ -218,5 +229,11 @@ void UsersForward::TestQuery(){
   
   query.exec("SELECT 1");
   query.clear();
+  
+}
+
+void UsersForward::SetCompleterList(QStringList list){
+
+  completerModel->setStringList(list);
   
 }
