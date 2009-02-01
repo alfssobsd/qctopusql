@@ -46,20 +46,6 @@ FindDialog::FindDialog(QSqlDatabase db, QWidget *parent)
   connect(tableWidget_Find, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(showContextMenu(const QPoint&)));
 
 }
-FindDialog::~FindDialog(){
-
-  disconnect(pushButton_Find, SIGNAL(clicked()), this, SLOT(Find()));
-  disconnect(checkBox, SIGNAL(clicked(bool)), lineEdit_Domain, SLOT(setEnabled(bool)));
-  disconnect(tableWidget_Find, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(showContextMenu(const QPoint&)));
-
-  for(int i = tableWidget_Find->rowCount(); i <= 0; i--)
-	tableWidget_Find->removeRow(i);
-  
-  tableWidget_Find->clear();
-  
-  delete tableWidget_Find;
-  
-}
 
 bool FindDialog::Empty_Test(){
 
