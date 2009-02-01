@@ -34,6 +34,10 @@
 #include <QSpacerItem>
 #include <ui_login.h>
 #include <QSqlDatabase>
+#include <users.h>
+#include <aliases.h>
+#include <users_forward.h>
+#include <domains.h>
 
 class MainWindow : public QWidget
 {
@@ -43,11 +47,16 @@ public:
   
   MainWindow (QWidget *parent = 0);
   QSqlDatabase db;
-  // QLineEdit *ui_E_Login, *ui_E_Host, *ui_E_Port, *ui_E_DB, *ui_E_Password; 
+ 
 private:
   Ui::Login ui;
   QTabWidget *Tab;
-				 
+  User *UserWidget;
+  Aliases *AliasesWidget;
+  UsersForward *UsersForwardWidget;
+  Domains *DomainsWidget;			  
+  int GetAllDomains();
+						
 private slots:
   void About();
   void DialogProfiles();

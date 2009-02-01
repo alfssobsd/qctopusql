@@ -49,7 +49,8 @@ class User : public QWidget
 public:
   
   User(QSqlDatabase db,QWidget *parent);
-
+  void SetCompleterList(QStringList list);
+  
   QLineEdit *QLineDomain;
   QTableWidget *UserTable;
   QSqlDatabase db_psql;
@@ -67,6 +68,8 @@ private slots:
 private:
   Ui::Users ui;
   
+  QStringListModel * completerModel;
+  QCompleter *completer;
   QPushButton *Button_Get;
   QTableWidgetItem *__item0;
   QTableWidgetItem *__item1;

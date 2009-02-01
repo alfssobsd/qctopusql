@@ -18,10 +18,6 @@
 
 
 #include <main_window.h>
-#include <users.h>
-#include <aliases.h>
-#include <users_forward.h>
-#include <domains.h>
 #include <profiles.h>
 #include <about.h>
 #include <QWidget>
@@ -43,10 +39,10 @@ MainWindow::MainWindow(QWidget *parent)
   connect(ui.pushButton_Connect, SIGNAL(clicked()), this, SLOT(ConnectDB()));
   connect(ui.pushButton_About, SIGNAL(clicked()), this, SLOT(About()));
   
-  User *UserWidget = new User(db, this);
-  Aliases *AliasesWidget = new Aliases(db, this);
-  UsersForward *UsersForwardWidget = new UsersForward(db, this);
-  Domains *DomainsWidget = new Domains(db, this);
+  UserWidget = new User(db, this);
+  AliasesWidget = new Aliases(db, this);
+  UsersForwardWidget = new UsersForward(db, this);
+  DomainsWidget = new Domains(db, this);
   
   connect(UserWidget, SIGNAL(DisconnectDB()), this, SLOT(DisconnectDB()));
   connect(AliasesWidget, SIGNAL(DisconnectDB()), this, SLOT(DisconnectDB()));
@@ -108,6 +104,8 @@ void MainWindow::ConnectDB(){
 	disconnect(ui.pushButton_Connect, SIGNAL(clicked()), this, SLOT(ConnectDB()));
 	connect(ui.pushButton_Connect, SIGNAL(clicked()), this, SLOT(DisconnectDB()));
 	ui.pushButton_Connect->setText(tr("Disconnect"));
+
+	GetAllDomains();
 	
   }
   
@@ -137,5 +135,48 @@ void MainWindow::DisconnectDB(){
 	  
   
   db.close();
+
+}
+
+int MainWindow::GetAllDomains(){
+
+  QStringList tmp_list;
+	
+  QSqlQuery query( db );
+  
+  if( db.isOpen() ){;
+	
+	query.prepare("SELECT domain FROM domains");
+	
+	if( query.exec() ){
+	  
+	  for(int i = 0; i < query.size(); i++){
+		
+		query.next();
+		tmp_list << query.value(0).toString();
+		
+	  }
+	  
+	  query.clear();
+
+	  UserWidget->SetCompleterList(tmp_list);
+	  
+	}else{
+	  
+	  QMessageBox::warning(this, tr("Query Error"),
+						   query.lastError().text(),
+						   QMessageBox::Ok);
+	  return 1;
+	  
+	}
+	
+  }else{
+
+	DisconnectDB();
+	return 1;
+
+  }
+
+  return 0;
 
 }

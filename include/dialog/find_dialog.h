@@ -31,7 +31,7 @@ class FindDialog : public QDialog, private Ui::DialogFind {
   Q_OBJECT
 public:
   FindDialog (QSqlDatabase db, QWidget *parent=0);
-												 
+  ~FindDialog();									 
 private slots:
   void Find();
   void showContextMenu(const QPoint &point);

@@ -40,10 +40,7 @@ int main (int argc, char *argv[]){
   MainWindow MW;
   MW.show();
   MW.resize(800, 600);
-/*#ifdef Q_OS_WIN32
-  app.addLibraryPath("C:\Program Files\Qt4");
-  app.addLibraryPath("C:\Program Files\Qt4\plugins");
-#endif*/
+
   QStringList listlib;
   listlib = app.libraryPaths();
   for(int i = 0; i < listlib.size(); i++){

@@ -34,6 +34,9 @@
 #include <QColor>
 #include <users_add_dialog.h>
 #include <find_dialog.h>
+#include <QCompleter>
+#include <QStringList>
+#include <QStringListModel>
 
 User::User(QSqlDatabase db,QWidget *parent)
   : QWidget(parent)
@@ -54,6 +57,17 @@ User::User(QSqlDatabase db,QWidget *parent)
   
   }
   
+  QStringList wordList;
+  wordList << "obsd.org" ;
+
+  completerModel = new QStringListModel;
+  completerModel->setStringList(wordList);
+
+  completer = new QCompleter(this);
+  completer->setModel(completerModel);
+
+  QLineDomain->setCompleter(completer);
+
   connect(UserTable, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(showContextMenu(const QPoint&)));
   connect(Button_Get, SIGNAL(clicked()), this, SLOT(GetUser()));
 
@@ -292,3 +306,8 @@ void User::TestQuery(){
   
 }
 
+void User::SetCompleterList(QStringList list){
+
+  completerModel->setStringList(list);
+  
+}
