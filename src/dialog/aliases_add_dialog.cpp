@@ -36,8 +36,8 @@ AliasesAddDialog::AliasesAddDialog(QSqlDatabase db, QWidget *parent)
 
   setupUi( this );
   
-  alpha ("-?[a-z.\\-_0-9]+");
-  ValLocal_Part = new QRegExpValidator(alpha, this);
+  alpha = new QRegExp("-?[a-z.\\-_0-9]+");
+  ValLocal_Part = new QRegExpValidator(*alpha, this);
   
   connect(pushButton_Add, SIGNAL(clicked()), this, SLOT(NewRow()));
   connect(pushButton_Deleted, SIGNAL(clicked()), this, SLOT(DeleteRow()));
@@ -51,6 +51,7 @@ AliasesAddDialog::AliasesAddDialog(QSqlDatabase db, QWidget *parent)
 
 AliasesAddDialog::~AliasesAddDialog(){
 
+  delete alpha;
   delete ValLocal_Part;
 }
 

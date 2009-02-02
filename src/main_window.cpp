@@ -63,14 +63,14 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 MainWindow::~MainWindow(){
-
-  delete Tab;
-  delete layout;
+  
   delete LoginWidget;
   delete UserWidget;
   delete AliasesWidget;
   delete UsersForwardWidget;
   delete DomainsWidget;
+  delete Tab;
+  delete layout;
 }
 
 void MainWindow::About(){

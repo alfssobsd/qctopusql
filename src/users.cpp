@@ -37,6 +37,7 @@
 #include <QCompleter>
 #include <QStringList>
 #include <QStringListModel>
+#include <QProgressDialog>
 
 User::User(QSqlDatabase db,QWidget *parent)
   : QWidget(parent)
@@ -103,10 +104,19 @@ void User::GetUser(){
 	if( query.exec() ){
 
 	  UserTable->setRowCount(query.size());
+
+	  QProgressDialog progress(tr("Operation in progress."), tr("Cancel"),0,query.size(),this);
 	  
 	  for(int i = 0; i < query.size(); i++){
 		
 		query.next();
+
+		progress.setValue(i);
+		qApp->processEvents();
+		if (progress.wasCanceled()){
+		  UserTable->setRowCount(i);
+		  break;
+		}
 		
 		if(query.value(3).toInt(&ok) == 1){
 

@@ -41,7 +41,7 @@ class AliasesAddDialog : public QDialog, private Ui::DialogAddAliases {
  
  private:
 
-  QRegExp alpha;
+  QRegExp *alpha;
   QValidator *ValLocal_Part;
   QModelIndex index;
   QSqlDatabase db_psql;
