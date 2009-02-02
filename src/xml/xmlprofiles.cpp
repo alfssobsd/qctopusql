@@ -85,7 +85,7 @@ bool XmlProfiles::XmlCreateDocNull(void){
   int errorLine;
   int errorColumn;
   
-  xmlStr = "<?xml version='1.0' encoding='UTF-8' ?><profiles version='1.0'><profile><name>default</name><user>postgres</user><password></password><host>localhost</host><port>5432</port><db>exim</db><context>test context</context><profile><profiles></xml>";
+  xmlStr = "<?xml version='1.0' encoding='UTF-8' ?><profiles version='1.0'><profile><name>default</name><user>postgres</user><password></password><host>localhost</host><port>5432</port><db>exim</db><context>test context</context></profile><profiles></xml>";
 
   ok = domDoc.setContent(xmlStr, true,
 						 &errorStr, &errorLine, &errorColumn);

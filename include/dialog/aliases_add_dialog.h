@@ -31,7 +31,8 @@ class AliasesAddDialog : public QDialog, private Ui::DialogAddAliases {
     Q_OBJECT
  public:
   AliasesAddDialog(QSqlDatabase db,QWidget *parent=0);
- 
+  ~AliasesAddDialog();
+					 
  private slots:
   void Add();
   void NewRow();
@@ -39,6 +40,9 @@ class AliasesAddDialog : public QDialog, private Ui::DialogAddAliases {
 
  
  private:
+
+  QRegExp alpha;
+  QValidator *ValLocal_Part;
   QModelIndex index;
   QSqlDatabase db_psql;
   bool Empty_Test();

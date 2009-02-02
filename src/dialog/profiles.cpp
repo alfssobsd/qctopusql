@@ -64,6 +64,12 @@ Profiles::Profiles (QLineEdit *host, QLineEdit *port, QLineEdit *db, QLineEdit *
   connect(pushButton_Ok, SIGNAL(clicked()), this, SLOT(AcceptProfile()));
 }
 
+Profiles::~Profiles(){
+
+  delete config;
+}
+
+
 void Profiles::LoadProfile(QListWidgetItem * item){
 
   int currentRow;

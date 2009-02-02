@@ -30,8 +30,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
   Tab = new QTabWidget;
-  QHBoxLayout *layout = new QHBoxLayout;
-  QWidget *LoginWidget = new QWidget;
+  layout = new QHBoxLayout;
+  LoginWidget = new QWidget;
   
   ui.setupUi( LoginWidget );
   
@@ -61,6 +61,18 @@ MainWindow::MainWindow(QWidget *parent)
   setLayout(layout);
 
 }
+
+MainWindow::~MainWindow(){
+
+  delete Tab;
+  delete layout;
+  delete LoginWidget;
+  delete UserWidget;
+  delete AliasesWidget;
+  delete UsersForwardWidget;
+  delete DomainsWidget;
+}
+
 void MainWindow::About(){
 
   AboutDialog *Dialog;

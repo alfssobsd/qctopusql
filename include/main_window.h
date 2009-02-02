@@ -46,10 +46,14 @@ class MainWindow : public QWidget
 public:
   
   MainWindow (QWidget *parent = 0);
+  ~MainWindow();
   QSqlDatabase db;
  
 private:
   Ui::Login ui;
+
+  QHBoxLayout *layout;
+  QWidget *LoginWidget;
   QTabWidget *Tab;
   User *UserWidget;
   Aliases *AliasesWidget;

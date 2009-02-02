@@ -39,7 +39,7 @@ class Profiles : public QDialog, private Ui::ProfilesDialog {
 public:
 
   Profiles(QLineEdit *host, QLineEdit *port, QLineEdit *db, QLineEdit *login, QLineEdit *Psw,QWidget *parent=0);
-
+  ~Profiles();
   QLineEdit *QLineHost;
   QLineEdit *QLinePort;
   QLineEdit *QLineLogin;
