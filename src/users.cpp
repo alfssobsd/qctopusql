@@ -79,12 +79,15 @@ void User::GetUser(){
   
   bool ok;
   QColor ColorItem(0, 0, 0);
-
-
   QSqlQuery query( db_psql);
 
   query.exec("SELECT 1");
   query.clear();
+
+  /*freezing input Users Widget*/
+  ui.pushButton_Get->setEnabled(false);
+  ui.lineEdit_Domain->setEnabled(false);
+  ui.UserTable->setEnabled(false);
   
   if( db_psql.isOpen() ){
 
@@ -105,7 +108,7 @@ void User::GetUser(){
 
 	  UserTable->setRowCount(query.size());
 
-	  QProgressDialog progress(tr("Operation in progress."), tr("Cancel"),0,query.size(),this);
+	  QProgressDialog progress(tr("Getting a list of users."), tr("Cancel"),0,query.size(),this);
 	  
 	  for(int i = 0; i < query.size(); i++){
 		
@@ -170,7 +173,7 @@ void User::GetUser(){
 
 	  UserTable->setSortingEnabled(true);
 	  query.clear();
-	  
+
 	}else{
 	  
 	  QMessageBox::warning(this, tr("Query Error"),
@@ -184,6 +187,11 @@ void User::GetUser(){
 	
   }
 
+  /*defrosting input Users Widget*/
+  ui.pushButton_Get->setEnabled(true);
+  ui.lineEdit_Domain->setEnabled(true);
+  ui.UserTable->setEnabled(true);
+  
 }
 
 void User::showContextMenu(const QPoint &point){

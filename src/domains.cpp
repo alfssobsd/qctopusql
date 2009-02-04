@@ -19,7 +19,7 @@
 
 #include <domains.h>
 #include <domains_add_dialog.h>
-
+#include <QProgressDialog>
 
 
 Domains::Domains (QSqlDatabase db,QWidget *parent)
@@ -29,17 +29,20 @@ Domains::Domains (QSqlDatabase db,QWidget *parent)
   db_psql = db;
   
   ui.setupUi( this );
-  
   connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(GetDomains()));
-  
   connect(ui.tableWidget, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(showContextMenu(const QPoint&)));
-
   ui.tableWidget->setColumnWidth(0, 200);
 
 }
 
 void Domains::GetDomains(){
 
+
+  /*freezing input Domains Widget*/
+  ui.pushButton->setEnabled(false);
+  ui.comboBox->setEnabled(false);
+  ui.tableWidget->setEnabled(false);
+  
   TestQuery();
   
   if( db_psql.isOpen() ){ 
@@ -75,10 +78,18 @@ void Domains::GetDomains(){
 	if( query.exec() ){
 	  
 	  ui.tableWidget->setRowCount(query.size());
-
+	  QProgressDialog progress(tr("Getting a list of domains."), tr("Cancel"),0,query.size(),this);
+	  
 	  for(int i = 0; i < query.size(); i++){
 		
 		query.next();
+
+		progress.setValue(i);
+		qApp->processEvents();
+		if (progress.wasCanceled()){
+		  ui.tableWidget->setRowCount(i);
+		  break;
+		}
 		
 		__item0 = new QTableWidgetItem();
 		__item0->setText(query.value(0).toString());
@@ -115,6 +126,10 @@ void Domains::GetDomains(){
 	
   }
   
+  /*defrosting input Domains Widget*/
+  ui.pushButton->setEnabled(true);
+  ui.tableWidget->setEnabled(true);
+  ui.comboBox->setEnabled(true);
 }
 
 void Domains::showContextMenu(const QPoint &point){

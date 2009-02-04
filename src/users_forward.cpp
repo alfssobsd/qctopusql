@@ -54,7 +54,11 @@ UsersForward::UsersForward(QSqlDatabase db, QWidget *parent)
 
 void UsersForward::GetUsersForward(){
 
-
+  /*freezing input Users Forward Widget*/
+  ui.pushButton->setEnabled(false);
+  ui.lineEdit_Domain->setEnabled(false);
+  ui.tableWidget_UsersForward->setEnabled(false);
+  
   TestQuery();
   
   if( db_psql.isOpen() ){ 
@@ -76,11 +80,19 @@ void UsersForward::GetUsersForward(){
 	if( query.exec() ){
 
 	  ui.tableWidget_UsersForward->setRowCount(query.size());
+	  QProgressDialog progress(tr("Getting a list of users forward."), tr("Cancel"),0,query.size(),this);
 	  
 	  for(int i = 0; i < query.size(); i++){
 		
 		query.next();
-		
+
+		progress.setValue(i);
+		qApp->processEvents();
+		if (progress.wasCanceled()){
+		  ui.tableWidget_UsersForward->setRowCount(i);
+		  break;
+		}
+
 		__item0 = new QTableWidgetItem();
 		__item0->setText(query.value(0).toString());
 		ui.tableWidget_UsersForward->setItem(i, 0, __item0);
@@ -127,6 +139,10 @@ void UsersForward::GetUsersForward(){
 	
   }
   
+  /*defrosting input Users ForwardWidget*/
+  ui.pushButton->setEnabled(true);
+  ui.tableWidget_UsersForward->setEnabled(true);
+  ui.lineEdit_Domain->setEnabled(true); 
 }
 
 

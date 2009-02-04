@@ -55,6 +55,11 @@ Aliases::Aliases(QSqlDatabase db, QWidget *parent)
 
 void Aliases::GetAliases(){
   
+  /*freezing input Aliases Widget*/
+  ui.pushButton->setEnabled(false);
+  ui.lineEdit_Domain->setEnabled(false);
+  ui.tableWidget_Aliases->setEnabled(false);
+
   TestQuery();
   
   if( db_psql.isOpen() ){ 
@@ -76,10 +81,18 @@ void Aliases::GetAliases(){
 	if( query.exec() ){
 	  
 	  ui.tableWidget_Aliases->setRowCount(query.size());
-
+	  QProgressDialog progress(tr("Getting a list of aliases."), tr("Cancel"),0,query.size(),this);
+	  
 	  for(int i = 0; i < query.size(); i++){
 		
 		query.next();
+
+		progress.setValue(i);
+		qApp->processEvents();
+		if (progress.wasCanceled()){
+		  ui.tableWidget_Aliases->setRowCount(i);
+		  break;
+		}
 		
 		__item0 = new QTableWidgetItem();
 		__item0->setText(query.value(0).toString());
@@ -128,6 +141,10 @@ void Aliases::GetAliases(){
 	
   }
   
+  /*defrosting input Aliases Widget*/
+  ui.pushButton->setEnabled(true);
+  ui.tableWidget_Aliases->setEnabled(true);
+  ui.lineEdit_Domain->setEnabled(true);
 }
 
 
