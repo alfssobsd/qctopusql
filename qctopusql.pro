@@ -6,6 +6,7 @@ TEMPLATE = app
 TARGET = qctopusql
 target.path = /usr/local/sbin
 INSTALLS += target
+OBJECTS_DIR= obj
 
 DEPENDPATH += . form include src include/dialog include/xml src/dialog src/xml
 INCLUDEPATH += . include include/dialog include/xml
