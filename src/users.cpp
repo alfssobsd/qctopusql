@@ -221,6 +221,7 @@ void User::Dialog_Add_User(){
   
   UsersAddDialog *AddDialog;
   AddDialog = new UsersAddDialog( db_psql );
+  AddDialog->setCompleterModel( completer->completionModel() );
   AddDialog->exec();
 
   delete AddDialog;

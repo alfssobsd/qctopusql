@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008  by Kravchuk Sergei V. (alfss@obsd.ru)
+ * Copyright (C) 2008-2009  by Kravchuk Sergei V. (alfss@obsd.ru)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,20 +23,26 @@
 
 #include <QDialog>
 #include <QSqlDatabase>
+#include <QCompleter>
+#include <QAbstractItemModel>
 #include "ui_users_add_dialog.h"
 
 class UsersAddDialog : public QDialog, private Ui::DialogAdd {
-    Q_OBJECT
- public:
+  Q_OBJECT
+
+public:
   UsersAddDialog(QSqlDatabase db,QWidget *parent=0);
-												   
- private slots:
+  ~UsersAddDialog();
+  void setCompleterModel(QAbstractItemModel *model);											   
+
+private slots:
   void Add();
  
  private:
   QSqlDatabase db_psql;
   bool Empty_Test();
-
+  QCompleter *completer;
+  
 //signals:
 //  void DisconnectDB();
 

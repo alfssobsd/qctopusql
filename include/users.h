@@ -54,7 +54,7 @@ public:
   QLineEdit *QLineDomain;
   QTableWidget *UserTable;
   QSqlDatabase db_psql;
-					  
+
 private slots:
   void GetUser();
   void showContextMenu(const QPoint &point);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008  by Kravchuk Sergei V. (alfss@obsd.ru)
+ * Copyright (C) 2008-2009  by Kravchuk Sergei V. (alfss@obsd.ru)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,9 +40,16 @@ UsersAddDialog::UsersAddDialog(QSqlDatabase db,QWidget *parent)
   
   lineEdit_Login->setValidator(ValLogin);
   lineEdit_Domain->setValidator(ValLogin);
-  
+
+  completer = new QCompleter(this);
+  lineEdit_Domain->setCompleter(completer);
 }
 
+UsersAddDialog::~UsersAddDialog(){
+
+  delete completer;
+
+}
 
 bool  UsersAddDialog::Empty_Test(){
   
@@ -140,4 +147,9 @@ void UsersAddDialog::Add(){
 	
   }
   
+}
+void UsersAddDialog::setCompleterModel(QAbstractItemModel *model){
+
+  completer->setModel(model);
+
 }
