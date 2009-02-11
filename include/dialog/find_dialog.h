@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008  by Kravchuk Sergei V. (alfss@obsd.ru)
+ * Copyright (C) 2008-2009  by Kravchuk Sergei V. (alfss@obsd.ru)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,8 @@
 #include <QDialog>
 #include <QSqlDatabase>
 #include <QAction>
+#include <QCompleter>
+#include <QAbstractItemModel>
 #include "ui_find_dialog.h"
 #include <QModelIndex>
 
@@ -31,7 +33,9 @@ class FindDialog : public QDialog, private Ui::DialogFind {
   Q_OBJECT
 public:
   FindDialog (QSqlDatabase db, QWidget *parent=0);
-							 
+  void setCompleterModel(QAbstractItemModel *model);
+  ~FindDialog();
+			   
 private slots:
   void Find();
   void showContextMenu(const QPoint &point);
@@ -42,6 +46,7 @@ private slots:
 private:
   QSqlDatabase db_psql;
   bool Empty_Test();
+  QCompleter *completer;
   QTableWidgetItem *__item0;
   QTableWidgetItem *__item1;
   QTableWidgetItem *__item2;

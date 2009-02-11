@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008  by Kravchuk Sergei V. (alfss@obsd.ru)
+ * Copyright (C) 2008-2009  by Kravchuk Sergei V. (alfss@obsd.ru)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,6 +45,13 @@ FindDialog::FindDialog(QSqlDatabase db, QWidget *parent)
   connect(checkBox, SIGNAL(clicked(bool)), lineEdit_Domain, SLOT(setEnabled(bool)));
   connect(tableWidget_Find, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(showContextMenu(const QPoint&)));
 
+  completer = new QCompleter(this);
+  lineEdit_Domain->setCompleter(completer);
+}
+
+FindDialog::~FindDialog(){
+
+  delete completer;
 }
 
 bool FindDialog::Empty_Test(){
@@ -252,3 +259,8 @@ void FindDialog::TestQuery(){
    
 }
 
+void FindDialog::setCompleterModel(QAbstractItemModel *model){
+
+  completer->setModel(model);
+  
+}
