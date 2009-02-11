@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008  by Kravchuk Sergei V. (alfss@obsd.ru)
+ * Copyright (C) 2008-2009  by Kravchuk Sergei V. (alfss@obsd.ru)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,6 +24,8 @@
 #include <QDialog>
 #include <QSqlDatabase>
 #include <QModelIndex>
+#include <QCompleter>
+#include <QAbstractItemModel>
 #include "ui_aliases_add_dialog.h"
 
 
@@ -32,7 +34,8 @@ class AliasesAddDialog : public QDialog, private Ui::DialogAddAliases {
  public:
   AliasesAddDialog(QSqlDatabase db,QWidget *parent=0);
   ~AliasesAddDialog();
-					 
+  void setCompleterModel(QAbstractItemModel *model);
+												   
  private slots:
   void Add();
   void NewRow();
@@ -43,6 +46,7 @@ class AliasesAddDialog : public QDialog, private Ui::DialogAddAliases {
 
   QRegExp *alpha;
   QValidator *ValLocal_Part;
+  QCompleter *completer;
   QModelIndex index;
   QSqlDatabase db_psql;
   bool Empty_Test();

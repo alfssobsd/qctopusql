@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008  by Kravchuk Sergei V. (alfss@obsd.ru)
+ * Copyright (C) 2008-2009  by Kravchuk Sergei V. (alfss@obsd.ru)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,10 +47,13 @@ AliasesAddDialog::AliasesAddDialog(QSqlDatabase db, QWidget *parent)
   tableWidget_recipients->setColumnWidth(0, 230);
   tableWidget_recipients->setColumnWidth(1, 230);
 
+  completer = new Qcompleter(this);
+  lineEdit_Domain->setCompleter(completer);
 }
 
 AliasesAddDialog::~AliasesAddDialog(){
 
+  delete completer;
   delete alpha;
   delete ValLocal_Part;
 }
@@ -195,5 +198,11 @@ void AliasesAddDialog::TestQuery(){
   
   query.exec("SELECT 1");
   query.clear();
+  
+}
+
+void AliasesAddDialog::setCompleterModel(QAbstractItemModel *model){
+
+  completer->setModel(model);
   
 }
