@@ -44,9 +44,14 @@ AliasesFindDialog::AliasesFindDialog(QSqlDatabase db, QWidget *parent)
   connect(checkBox, SIGNAL(clicked(bool)), lineEdit_Domain, SLOT(setEnabled(bool)));
   connect(tableWidget_Find, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(showContextMenu(const QPoint&)));
 
-  completer = new Qcompleter(this);
+  completer = new QCompleter(this);
   lineEdit_Domain->setCompleter(completer);
 }
+AliasesFindDialog::~AliasesFindDialog(){
+
+  delete completer;
+}
+
 
 void AliasesFindDialog::Find(){
   

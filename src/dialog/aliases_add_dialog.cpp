@@ -47,7 +47,7 @@ AliasesAddDialog::AliasesAddDialog(QSqlDatabase db, QWidget *parent)
   tableWidget_recipients->setColumnWidth(0, 230);
   tableWidget_recipients->setColumnWidth(1, 230);
 
-  completer = new Qcompleter(this);
+  completer = new QCompleter(this);
   lineEdit_Domain->setCompleter(completer);
 }
 
