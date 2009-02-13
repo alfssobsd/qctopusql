@@ -26,11 +26,15 @@
 #include <QAction>
 #include "ui_aliases_find_dialog.h"
 #include <QModelIndex>
+#include <QAbstractItemModel>
+#include <QCompleter>
 
 class AliasesFindDialog : public QDialog, private Ui::AliasesDialogFind {
     Q_OBJECT
  public:
   AliasesFindDialog (QSqlDatabase db, QWidget *parent=0);
+  ~AliasesFindDialog();
+  void setCompleterModel(QAbstractItemModel *model);
   QSqlDatabase db_psql;
   QString Local_Part;
   QString Domain;
@@ -42,6 +46,7 @@ class AliasesFindDialog : public QDialog, private Ui::AliasesDialogFind {
   void DialogEdit();
  
  private:
+  QCompleter *completer;
   QTableWidgetItem *__item0;
   QTableWidgetItem *__item1;
   QTableWidgetItem *__item2;

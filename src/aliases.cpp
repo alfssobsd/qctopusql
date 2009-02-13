@@ -229,6 +229,7 @@ void Aliases::Dialog_Find_Aliases(){
 
   AliasesFindDialog *DialogFind;
   DialogFind = new AliasesFindDialog( db_psql );
+  DialogFind->setCompleterModel( completer->completionModel() );
   DialogFind->exec();
   delete DialogFind;
   
