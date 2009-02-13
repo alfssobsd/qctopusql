@@ -54,7 +54,8 @@ public:
   QLineEdit *QLineDomain;
   QTableWidget *UserTable;
   QSqlDatabase db_psql;
-
+  QStringListModel * completerModel;
+									  
 private slots:
   void GetUser();
   void showContextMenu(const QPoint &point);
@@ -68,7 +69,6 @@ private slots:
 private:
   Ui::Users ui;
   
-  QStringListModel * completerModel;
   QCompleter *completer;
   QPushButton *Button_Get;
   QTableWidgetItem *__item0;

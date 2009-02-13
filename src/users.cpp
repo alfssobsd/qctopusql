@@ -221,7 +221,7 @@ void User::Dialog_Add_User(){
   
   UsersAddDialog *AddDialog;
   AddDialog = new UsersAddDialog( db_psql );
-  AddDialog->setCompleterModel( completer->completionModel() );
+  AddDialog->setCompleterModel( completerModel );
   AddDialog->exec();
 
   delete AddDialog;
@@ -240,7 +240,7 @@ void User::DialogFind(){
  
   FindDialog *DialogFindUsers;
   DialogFindUsers = new FindDialog( db_psql );
-  DialogFindUsers->setCompleterModel( completer->completionModel() );
+  DialogFindUsers->setCompleterModel( completerModel );
   DialogFindUsers->exec();
 
   delete DialogFindUsers;

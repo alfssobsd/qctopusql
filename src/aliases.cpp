@@ -172,7 +172,7 @@ void Aliases::Dialog_Add_Aliases(){
   
   AliasesAddDialog *DialogAdd;
   DialogAdd = new AliasesAddDialog( db_psql );
-  DialogAdd->setCompleterModel( completer->completionModel() );
+  DialogAdd->setCompleterModel( completerModel );
   DialogAdd->exec();
   delete DialogAdd;
 
@@ -229,7 +229,7 @@ void Aliases::Dialog_Find_Aliases(){
 
   AliasesFindDialog *DialogFind;
   DialogFind = new AliasesFindDialog( db_psql );
-  DialogFind->setCompleterModel( completer->completionModel() );
+  DialogFind->setCompleterModel( completerModel );
   DialogFind->exec();
   delete DialogFind;
   
