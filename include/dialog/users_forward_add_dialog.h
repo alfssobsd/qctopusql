@@ -41,6 +41,7 @@ class UsersForwardAddDialog : public QDialog, private Ui::DialogAddUsersForward 
 
  
  private:
+  QCompleter *completer;
   QModelIndex index;
   QSqlDatabase db_psql;
   bool Empty_Test();

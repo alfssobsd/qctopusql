@@ -44,6 +44,7 @@ class UsersForwardFindDialog : public QDialog, private Ui::UsersForwardDialogFin
   void DialogEdit();
  
  private:
+  QCompleter *completer;
   QTableWidgetItem *__item0;
   QTableWidgetItem *__item1;
   QTableWidgetItem *__item2;
