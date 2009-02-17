@@ -170,6 +170,7 @@ void UsersForward::Dialog_Add_UsersForward(){
   
   UsersForwardAddDialog *DialogAdd;
   DialogAdd = new UsersForwardAddDialog( db_psql );
+  DialogAdd->setCompleterModel( completerModel );
   DialogAdd->exec();
   delete DialogAdd;
 
@@ -226,6 +227,7 @@ void UsersForward::Dialog_Find_UsersForward(){
 
   UsersForwardFindDialog *DialogFind;
   DialogFind = new UsersForwardFindDialog( db_psql );
+  DialogFind->setCompleterModel( completerModel );
   DialogFind->exec();
   delete DialogFind;
 
