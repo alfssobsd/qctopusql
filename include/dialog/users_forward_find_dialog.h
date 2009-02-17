@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008  by Kravchuk Sergei V. (alfss@obsd.ru)
+ * Copyright (C) 2008-2009  by Kravchuk Sergei V. (alfss@obsd.ru)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,11 +26,15 @@
 #include <QAction>
 #include "ui_users_forward_find_dialog.h"
 #include <QModelIndex>
+#include <QCompleter>
+#include <QAbstractItemModel>
 
 class UsersForwardFindDialog : public QDialog, private Ui::UsersForwardDialogFind {
     Q_OBJECT
  public:
   UsersForwardFindDialog (QSqlDatabase db, QWidget *parent=0);
+  ~UsersForwardFindDialog();
+  void setCompleterModel(QAbstractItemModel *model);
   QSqlDatabase db_psql;
 						
  private slots:

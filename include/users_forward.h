@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008  by Kravchuk Sergei V. (alfss@obsd.ru)
+ * Copyright (C) 2008-2009  by Kravchuk Sergei V. (alfss@obsd.ru)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,7 +52,8 @@ public:
   UsersForward(QSqlDatabase db, QWidget *parent);
   QSqlDatabase db_psql;
   void SetCompleterList(QStringList list);
-										 
+  QStringListModel * completerModel;
+										   
 private slots:
   void GetUsersForward();
   void Dialog_Add_UsersForward();
@@ -63,8 +64,7 @@ private slots:
   
 private:
   Ui::UsersForward ui;
-
-  QStringListModel * completerModel;
+  
   QCompleter *completer;
   QTableWidgetItem *__item0;
   QTableWidgetItem *__item1;
