@@ -33,6 +33,13 @@ Domains::Domains (QSqlDatabase db,QWidget *parent)
   connect(ui.tableWidget, SIGNAL(customContextMenuRequested(const QPoint&)), this, SLOT(showContextMenu(const QPoint&)));
   ui.tableWidget->setColumnWidth(0, 200);
 
+  QStringList TypeList;
+  TypeList <<"0_O Not found";
+
+  model = new QStringListModel;
+  model->setStringList(TypeList);
+  ui.comboBox->setModel(model);
+  
 }
 
 void Domains::GetDomains(){
@@ -59,7 +66,9 @@ void Domains::GetDomains(){
 	QSqlQuery query( db_psql );
 	
 	query.prepare("SELECT domain,type  FROM domains_view WHERE type=:id_type");
-	
+
+	query.bindValue(":id_type",ui.comboBox->currentText()); 
+    /*
 	switch( ui.comboBox->currentIndex() ){
 	  
 	case 0 :
@@ -74,7 +83,7 @@ void Domains::GetDomains(){
 	  query.bindValue(":id_type", tr("VIRTUAL"));
 	  
 	}
-
+	*/
 	if( query.exec() ){
 	  
 	  ui.tableWidget->setRowCount(query.size());
@@ -195,4 +204,10 @@ void Domains::TestQuery(){
   query.exec("SELECT 1");
   query.clear();
   
+}
+
+void Domains::setTypeModel(QStringList list){
+
+  model->setStringList(list);
+
 }

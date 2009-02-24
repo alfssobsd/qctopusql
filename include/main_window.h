@@ -60,7 +60,8 @@ private:
   UsersForward *UsersForwardWidget;
   Domains *DomainsWidget;			  
   int GetAllDomains();
-						
+  int GetTypeDomains();
+					  
 private slots:
   void About();
   void DialogProfiles();

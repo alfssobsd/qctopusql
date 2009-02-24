@@ -41,6 +41,8 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <ui_domains.h>
+#include <QStringListModel>
+#include <QStringList>
 
 class Domains : public QWidget
 {
@@ -50,13 +52,15 @@ public:
   
   Domains(QSqlDatabase db,QWidget *parent);
   QSqlDatabase db_psql;
-					  
+  QStringListModel *model;
+  void setTypeModel(QStringList list);
+						 
 private slots:
   void GetDomains();
   void Dialog_Delete_Domains();
   void Dialog_Add_Domains();
-  void showContextMenu(const QPoint &point);
-  
+  void showContextMenu(const QPoint &point);  
+
 private:
   Ui::WidgetDomains ui;
   QTableWidgetItem *__item0;

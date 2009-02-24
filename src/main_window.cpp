@@ -118,7 +118,7 @@ void MainWindow::ConnectDB(){
 	ui.pushButton_Connect->setText(tr("Disconnect"));
 
 	GetAllDomains();
-	
+	GetTypeDomains();
   }
   
 }
@@ -156,7 +156,7 @@ int MainWindow::GetAllDomains(){
 	
   QSqlQuery query( db );
   
-  if( db.isOpen() ){;
+  if( db.isOpen() ){
 	
 	query.prepare("SELECT domain FROM domains");
 	
@@ -193,4 +193,42 @@ int MainWindow::GetAllDomains(){
 
   return 0;
 
+}
+
+int MainWindow::GetTypeDomains(){
+
+  QStringList tmp_list;
+  QSqlQuery query( db );
+
+  if( db.isOpen() ){
+	
+	query.prepare("SELECT type FROM domain_types ORDER BY id");
+
+	if( query.exec() ){
+	  for(int i = 0; i < query.size(); i++){
+
+		query.next();
+		tmp_list << query.value(0).toString();
+
+	  }
+	  
+	  query.clear();
+	  DomainsWidget->setTypeModel(tmp_list);
+
+	}else{
+
+	  QMessageBox::warning(this, tr("Query Error"),
+						   query.lastError().text(),
+						   QMessageBox::Ok);
+	  return 1;
+	  
+	}	
+  }else{
+
+	DisconnectDB();
+	return 1;
+	
+  }
+  
+  return 0;
 }
