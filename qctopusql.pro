@@ -3,9 +3,15 @@
 ######################################################################
 
 TEMPLATE = app
+
 TARGET = qctopusql
 target.path = /usr/local/sbin
-INSTALLS += target
+INSTALLS += target 
+
+logo.path = /usr/local/qctopusql/img/
+logo.files = form/images/* 
+INSTALLS += logo
+
 OBJECTS_DIR= obj
 
 DEPENDPATH += . form include src include/dialog include/xml src/dialog src/xml

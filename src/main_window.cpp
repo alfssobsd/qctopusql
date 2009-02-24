@@ -57,6 +57,8 @@ MainWindow::MainWindow(QWidget *parent)
   
   layout->addWidget(LoginWidget);
   layout->addWidget(Tab);
+
+  this->setWindowIcon(QPixmap(QString::fromUtf8(":/logo_64/images/logo/logo_64.png")));
   
   setLayout(layout);
 
