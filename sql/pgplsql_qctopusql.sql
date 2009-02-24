@@ -1,3 +1,18 @@
+CREATE FUNCTION get_domain_type_id(text) RETURNS integer AS $$
+	DECLARE
+		t_type ALIAS FOR $1;
+		i_id_domain_type integer;
+	BEGIN
+		SELECT INTO i_id_domain_type id FROM domain_types WHERE type = t_type;
+
+		IF NOT FOUND THEN
+		   	  RETURN -1;
+		END IF;
+		
+		RETURN i_id_domain_type;
+	END;
+$$ LANGUAGE plpgsql;
+
 CREATE FUNCTION get_domain_id(text) RETURNS integer AS $$
     DECLARE
         t_domain ALIAS FOR $1;

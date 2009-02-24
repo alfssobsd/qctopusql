@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008  by Kravchuk Sergei V. (alfss@obsd.ru)
+ * Copyright (C) 2008-2009  by Kravchuk Sergei V. (alfss@obsd.ru)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,13 +27,15 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QMessageBox>
+#include <QStringListModel>
+#include <QStringList>
 #include "ui_domains_add_dialog.h"
 
 
 class DomainsAddDialog : public QDialog, private Ui::DomainsAddDialog {
   Q_OBJECT
 public:
-  DomainsAddDialog (QSqlDatabase db, QString domain, QString type);
+  DomainsAddDialog (QSqlDatabase db, QStringListModel *model, QString domain, QString type);
 																  
 private slots:
   void New();

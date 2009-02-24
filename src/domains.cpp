@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008  by Kravchuk Sergei V. (alfss@obsd.ru)
+ * Copyright (C) 2008-2009  by Kravchuk Sergei V. (alfss@obsd.ru)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,6 +41,11 @@ Domains::Domains (QSqlDatabase db,QWidget *parent)
   ui.comboBox->setModel(model);
   
 }
+Domains::~Domains(){
+
+  delete model;
+
+}
 
 void Domains::GetDomains(){
 
@@ -68,22 +73,7 @@ void Domains::GetDomains(){
 	query.prepare("SELECT domain,type  FROM domains_view WHERE type=:id_type");
 
 	query.bindValue(":id_type",ui.comboBox->currentText()); 
-    /*
-	switch( ui.comboBox->currentIndex() ){
-	  
-	case 0 :
-	  query.bindValue(":id_type", tr("LOCAL"));
-	  break;
-	  
-	case 1 :
-	  query.bindValue(":id_type", tr("RELAY"));
-	  break;
-
-	default :
-	  query.bindValue(":id_type", tr("VIRTUAL"));
-	  
-	}
-	*/
+ 
 	if( query.exec() ){
 	  
 	  ui.tableWidget->setRowCount(query.size());
@@ -160,9 +150,10 @@ void Domains::showContextMenu(const QPoint &point){
 }
 
 void Domains::Dialog_Add_Domains(){
-  
+
+
   DomainsAddDialog *AddDialog;
-  AddDialog = new DomainsAddDialog(db_psql, NULL,NULL);
+  AddDialog = new DomainsAddDialog(db_psql, model,NULL,NULL);
   AddDialog->exec();
   delete AddDialog;
   
@@ -173,7 +164,6 @@ void Domains::Dialog_Add_Domains(){
 	emit DisconnectDB();
 	
   }
-  
 }
 
 void Domains::Dialog_Delete_Domains(){
@@ -182,7 +172,7 @@ void Domains::Dialog_Delete_Domains(){
   QString Type = ui.tableWidget->item(ui.tableWidget->currentItem()->row(), 1)->text();
   
   DomainsAddDialog *DeleteDialog;
-  DeleteDialog = new DomainsAddDialog(db_psql, Domain, Type);
+  DeleteDialog = new DomainsAddDialog(db_psql, model,Domain, Type);
   DeleteDialog->exec();
   delete DeleteDialog;
 
@@ -193,7 +183,6 @@ void Domains::Dialog_Delete_Domains(){
 	emit DisconnectDB();
 	
   }
-  
 }
 
 

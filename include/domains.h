@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008  by Kravchuk Sergei V. (alfss@obsd.ru)
+ * Copyright (C) 2008-2009  by Kravchuk Sergei V. (alfss@obsd.ru)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,6 +51,7 @@ class Domains : public QWidget
 public:
   
   Domains(QSqlDatabase db,QWidget *parent);
+  ~Domains();
   QSqlDatabase db_psql;
   QStringListModel *model;
   void setTypeModel(QStringList list);

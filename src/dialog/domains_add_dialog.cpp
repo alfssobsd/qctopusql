@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008  by Kravchuk Sergei V. (alfss@obsd.ru)
+ * Copyright (C) 2008-2009  by Kravchuk Sergei V. (alfss@obsd.ru)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,12 +21,14 @@
 
 
 
-DomainsAddDialog::DomainsAddDialog (QSqlDatabase db, QString domain, QString type){
+DomainsAddDialog::DomainsAddDialog (QSqlDatabase db, QStringListModel *model, QString domain,QString type){
 
   db_psql = db;
   
   setupUi( this );
-  if( domain != NULL){
+  comboBox->setModel(model);
+  
+  if( type != NULL || domain != NULL){
 	
 	label_Domain->setText(tr("Deleted Domain"));
 	lineEdit_Domain->setText(domain);
@@ -35,37 +37,15 @@ DomainsAddDialog::DomainsAddDialog (QSqlDatabase db, QString domain, QString typ
 	this->setWindowTitle(tr("Deleted Domain"));
 
 	connect(buttonBox, SIGNAL(accepted()), this, SLOT(Deleted()));
-	
-	if(0 == QString::compare("LOCAL", type, Qt::CaseInsensitive)){
-	  
-	  comboBox->setCurrentIndex(0);
-	  comboBox->setEnabled(false);
-	  
-	}
-	
-	if(0 == QString::compare("RELAY", type, Qt::CaseInsensitive)){
-	  
-	  comboBox->setCurrentIndex(1);
-	  comboBox->setEnabled(false);
-	
-	}
 
-	if(0 == QString::compare("VIRTUAL", type, Qt::CaseInsensitive)){
-	  
-	  comboBox->setCurrentIndex(2);
-	  comboBox->setEnabled(false);
-	
-	}
-	 
+	comboBox->setCurrentIndex(comboBox->findText(type));
+	comboBox->setEnabled(false);
 	
   }else{
 	
 	connect(buttonBox, SIGNAL(accepted()), this, SLOT(New()));
 	
   }
-  
-  
-
 }
 
 void DomainsAddDialog::New(){
@@ -78,9 +58,9 @@ void DomainsAddDialog::New(){
 	  
 	  QSqlQuery query( db_psql );
 	  
-	  query.prepare("INSERT INTO domains (domain,id_type) VALUES (:domain, :id_type)");
+	  query.prepare("INSERT INTO domains (domain,id_type) VALUES (:domain, get_domain_type_id(:id_type))");
 	  
-	  query.bindValue(":id_type", comboBox->currentIndex());
+	  query.bindValue(":id_type", comboBox->currentText());
 	  query.bindValue(":domain", lineEdit_Domain->text());
 	  
 	  if( !query.exec() ){
@@ -102,9 +82,7 @@ void DomainsAddDialog::New(){
 	  this->reject();
 	  
 	}
-	
-  }
-  
+  }  
 }
 
 void DomainsAddDialog::Deleted(){
@@ -115,9 +93,9 @@ void DomainsAddDialog::Deleted(){
 	
 	QSqlQuery query( db_psql );
 	
-	query.prepare("DELETE FROM domains WHERE domain=:domain and id_type=:id_type");
+	query.prepare("DELETE FROM domains WHERE domain=:domain and id_type=get_domain_type_id(:id_type)");
 	
-	query.bindValue(":id_type", comboBox->currentIndex());
+	query.bindValue(":id_type", comboBox->currentText());
 	query.bindValue(":domain", lineEdit_Domain->text());
 	
 	if( !query.exec() ){
@@ -139,7 +117,6 @@ void DomainsAddDialog::Deleted(){
 	this->reject();
 
   }
-
 }
 
 void DomainsAddDialog::TestQuery(){
