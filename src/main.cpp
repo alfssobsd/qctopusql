@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <QApplication>
 #include <main_window.h>
 #include <QTranslator>
+#include <QPixmap>
 
 int main (int argc, char *argv[]){
 
@@ -50,7 +51,8 @@ int main (int argc, char *argv[]){
   }
 
   qDebug(app.applicationFilePath().toAscii());
-  
+
+  app.setWindowIcon(QPixmap(QString::fromUtf8(":/logo_128/images/logo/logo_128.png")));
   return app.exec();
 
 }

@@ -54,11 +54,9 @@ MainWindow::MainWindow(QWidget *parent)
   Tab->addTab(UsersForwardWidget, tr("Users Forward"));
   Tab->addTab(DomainsWidget, tr("Domains"));
   Tab->setEnabled(false);
-  
+
   layout->addWidget(LoginWidget);
   layout->addWidget(Tab);
-
-  this->setWindowIcon(QPixmap(QString::fromUtf8(":/logo_64/images/logo/logo_64.png")));
   
   setLayout(layout);
 
