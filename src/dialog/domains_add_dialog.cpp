@@ -28,7 +28,7 @@ DomainsAddDialog::DomainsAddDialog (QSqlDatabase db, QStringListModel *model, QS
   setupUi( this );
   comboBox->setModel(model);
   
-  if( type != NULL || domain != NULL){
+  if( type != NULL && domain != NULL){
 	
 	label_Domain->setText(tr("Deleted Domain"));
 	lineEdit_Domain->setText(domain);
